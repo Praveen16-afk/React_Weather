@@ -1,4 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
+import clearIcon from './assets/clear_icon.webp'
+import cloudIcon from './assets/cloud_icon.webp'
+import drizzleIcon from './assets/drizzle_icon.png'
+import rainIcon from './assets/rain_icon.webp'
+import snowIcon from './assets/snow_icon.webp'
+import windSpeed from './assets/wind_speed.png'
+import humidity from './assets/humidity.png'
 
 function Weather() {
 
@@ -6,20 +13,20 @@ function Weather() {
   const [weatherData, setWeatherData] = useState(false)
   
   const allIcons = {
-    "01d" : "src/assets/clear_icon.webp",
-    "01n" : "src/assets/clear_icon.webp",
-    "02d" : "src/assets/cloud_icon.webp",
-    "02n" : "src/assets/cloud_icon.webp",
-    "03d" : "src/assets/cloud_icon.webp",
-    "03n" : "src/assets/cloud_icon.webp",
-    "04d" : "src/assets/drizzle_icon.png",
-    "04n" : "src/assets/drizzle_icon.png",
-    "09d" : "src/assets/rain_icon.webp",
-    "09n" : "src/assets/rain_icon.webp",
-    "10d" : "src/assets/rain_icon.webp",
-    "10n" : "src/assets/rain_icon.webp",
-    "13d" : "src/assets/snow_icon.webp",
-    "13n" : "src/assets/snow_icon.webp",
+    "01d" : clearIcon,
+    "01n" : clearIcon,
+    "02d" : cloudIcon,
+    "02n" : cloudIcon,
+    "03d" : cloudIcon,
+    "03n" : cloudIcon,
+    "04d" : drizzleIcon,
+    "04n" : drizzleIcon,
+    "09d" : rainIcon,
+    "09n" : rainIcon,
+    "10d" : rainIcon,
+    "10n" : rainIcon,
+    "13d" : snowIcon,
+    "13n" : snowIcon,
   }
 
   
@@ -43,7 +50,7 @@ function Weather() {
       }
 
       console.log(data)
-      const icon = allIcons[data.weather[0].icon] || "src/assets/clear_icon.webp"
+      const icon = allIcons[data.weather[0].icon] || clearIcon
       setWeatherData({
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
@@ -85,14 +92,14 @@ function Weather() {
         <p className='text-white fs-4 fw-bold'>{weatherData.location}</p>
         <div className='weather-data d-flex justify-content-space-between'>
           <div className='col'>
-            <img src='src/assets/humidity.png'></img>
+            <img src={humidity}></img>
             <div>
               <p>{weatherData.humidity}%</p>
               <span>Humidity</span>
             </div>
           </div>
           <div className='col'>
-            <img src='src/assets/wind_speed.png'></img>
+            <img src={windSpeed}></img>
             <div>
               <p>{weatherData.windSpeed} km/h</p>
               <span>Wind Speed</span>
